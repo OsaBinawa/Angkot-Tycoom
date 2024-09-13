@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc0b73c975d37344aae0aef84842c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 150
+  timerData: {fileID: 11400000, guid: ee64b5c063346474e9e9d11dcc4fdcb4, type: 2}
   delayBeforeLoading: 7
   timerIsRunning: 0
   timerSlider: {fileID: 884608388}
@@ -473,8 +473,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37987462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5474, y: -17.8, z: -4.9893}
-  m_LocalScale: {x: 121.78176, y: 2, z: 124.43454}
+  m_LocalPosition: {x: 6.0825, y: -17.8, z: -12.4053}
+  m_LocalScale: {x: 176.89066, y: 2, z: 201.57935}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1579692425}
@@ -2604,6 +2604,7 @@ GameObject:
   - component: {fileID: 487325988}
   - component: {fileID: 487325987}
   - component: {fileID: 487325986}
+  - component: {fileID: 487325989}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -2642,11 +2643,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2670,13 +2671,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487325985}
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -22.97, y: 19.6, z: -21.6}
+  m_LocalPosition: {x: -56.7, y: 49.3, z: -52.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!114 &487325989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487325985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173a61a8849680047bd38dcd90a9854b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragSpeed: 5
+  fixedYPosition: 49.3
 --- !u!1001 &494955139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5958,6 +5973,7 @@ MonoBehaviour:
   Gas: 0
   LevelAngkot: 1
   jumlahAngkot: {fileID: 11400000, guid: c7b3d9254963c4d4f8840b368e6a9853, type: 2}
+  timerData: {fileID: 11400000, guid: ee64b5c063346474e9e9d11dcc4fdcb4, type: 2}
   Angkot2: {fileID: 529614324}
   Angkot3: {fileID: 192236050}
   Angkot4: {fileID: 1576338195}

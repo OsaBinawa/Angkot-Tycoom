@@ -1,23 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
-    public UpgradeSystem upgradeSystem;
-    public Money money;
+    public UpgradeSystem buildingManager; // Reference to the BuildingManager script
 
-    private void Start()
+    void Start()
     {
-       
-    }
-    public void OnUpgradeButtonClicked()
-    {
-        upgradeSystem.Upgrade();
-    }
-
-    public void MoneyCheats()
-    {
-        money.amount += 100;
+        // Get the button component and add a listener to call the Upgrade method when clicked
+        //GetComponent<Button>().onClick.AddListener(buildingManager.UpgradeBuilding);
     }
 }

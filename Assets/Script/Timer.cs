@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -7,8 +6,8 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 10f; // Set the countdown time in seconds
-    public float delayBeforeLoading = 7f; // Set the countdown time in seconds
+    public TimerData timerData; // Reference to the TimerData ScriptableObject
+    public float delayBeforeLoading = 7f; // Delay before loading the new scene
     public bool timerIsRunning = false;
     public Slider timerSlider;
     public bool IsEnd = false;
@@ -19,50 +18,54 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        // Set the maximum value of the slider to the initial time remaining
-        timerSlider.maxValue = timeRemaining;
-        timerSlider.value = timeRemaining;
+        if (timerData != null)
+        {
+            // Initialize the slider with values from TimerData
+            timerSlider.maxValue = timerData.maxTime;
+            timerSlider.value = timerData.timeRemaining;
 
-        // Starts the timer automatically
-        timerIsRunning = true;
-        IsEnd = false;
+            // Starts the timer
+            timerIsRunning = true;
+            IsEnd = false;
+        }
+        else
+        {
+            Debug.LogError("TimerData is not assigned.");
+        }
     }
 
     private void Update()
     {
         if (timerIsRunning)
         {
-            if (timeRemaining > 0)
+            if (timerData.timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                timerSlider.value = timeRemaining;
+                timerData.timeRemaining -= Time.deltaTime;
+                timerSlider.value = timerData.timeRemaining;
             }
             else
             {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
+                timerData.timeRemaining = 0;
                 timerIsRunning = false;
+                HandleTimerEnd();
             }
         }
-
-        if (timeRemaining == 0)
-        {
-            // Display the result panel
-            Result.SetActive(true);
-            //Time.timeScale = 0f;
-            IsEnd = true;
-            // Update the money text with the amount earned in the scene
-            moneyText.text = moneyEarnedInScene.ToString();
-        }
-
-        if (IsEnd == true)
-        {
-            StartCoroutine(LoadSceneAfterDelay());
-        }
-
     }
+
+    private void HandleTimerEnd()
+    {
+        // Display the result panel and update money text
+        Result.SetActive(true);
+        moneyText.text = moneyEarnedInScene.ToString();
+        IsEnd = true;
+
+        // Start the scene transition coroutine
+        StartCoroutine(LoadSceneAfterDelay());
+    }
+
     public void EndDay()
     {
+        // Immediately load the new scene
         SceneManager.LoadScene("Rumah");
     }
 

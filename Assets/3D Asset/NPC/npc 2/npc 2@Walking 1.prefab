@@ -322,12 +322,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   animator: {fileID: 0}
-  PATH: {fileID: 4645755897847569873, guid: 9700fd71d537c9142b64295e3a95cbb1, type: 3}
+  PATH: {fileID: 0}
   pathPoint: []
   speed: 4
   minDistance: 10
   stopDuration: 0
-  index: 3
+  index: 0
   loop: 0
   navMeshArea: Human
   stopIndices: 
@@ -339,7 +339,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609702532124019895}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 3

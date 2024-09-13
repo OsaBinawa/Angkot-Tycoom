@@ -4,31 +4,49 @@ using UnityEngine;
 
 public class UpgradeSystem : MonoBehaviour
 {
-    public GameObject[] upgradePrefabs; // Assign your upgrade prefabs in the inspector
-    private int currentLevel = 0;
-    private GameObject currentUpgrade;
+    public static UpgradeSystem instance;
+    public Money money;
+    public GameObject[] upgradePrefabs; // Array of prefabs for different upgrade levels
+    public Transform spawnPoint; // The location and rotation where the new prefab will be instantiated
 
+    public int currentLevel = 0; // To keep track of the current upgrade level
+    private GameObject currentObject; // Reference to the current active object
+
+    [SerializeField]
+    public float canBuyAngkot = 0f;
+    // Start is called before the first frame update
     void Start()
     {
-        ApplyUpgrade(0); // Initialize with the first level
+        money.LevelRumah = currentLevel;
+        // Initialize with the first prefab using the spawn point's rotation
+        currentObject = Instantiate(upgradePrefabs[currentLevel], spawnPoint.position, spawnPoint.rotation);
     }
 
+    // This function is called when the upgrade button is clicked
     public void Upgrade()
     {
-        if (currentLevel < upgradePrefabs.Length - 1)
+        if (money.amount >= 100000)
         {
-            currentLevel++;
-            ApplyUpgrade(currentLevel);
-        }
-    }
+            if (currentLevel + 1 < upgradePrefabs.Length)
+            {
+                currentLevel++; // Increment the upgrade level
 
-    void ApplyUpgrade(int level)
-    {
-        if (currentUpgrade != null)
-        {
-            Destroy(currentUpgrade);
-        }
+                // Destroy the current object
+                Destroy(currentObject);
 
-        currentUpgrade = Instantiate(upgradePrefabs[level], transform.position, transform.rotation, transform);
+                // Instantiate the new object with the spawn point's position and rotation
+                currentObject = Instantiate(upgradePrefabs[currentLevel], spawnPoint.position, spawnPoint.rotation);
+
+                money.amount -= 100000;
+                money.LevelRumah += 1;
+                canBuyAngkot += 1f;
+            }
+            else
+            {
+                Debug.Log("Max upgrade level reached.");
+            }
+        }
+        // Check if there is a next level
+        
     }
 }

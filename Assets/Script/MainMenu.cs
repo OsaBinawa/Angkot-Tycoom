@@ -8,7 +8,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject CreditMenu;
     public GameObject mainMenu;
+    public GameObject panduan;
     public bool CreditMenuOpen = false;
+    public bool panduanOpen = false;
 
 
     private void Update()
@@ -18,6 +20,12 @@ public class MainMenu : MonoBehaviour
             CreditMenu.SetActive(false);
             mainMenu.SetActive(true);
             CreditMenuOpen=false;
+        }
+        if (panduanOpen == true && Input.GetKeyUp(KeyCode.Escape))
+        {
+            panduan.SetActive(false);
+            mainMenu.SetActive(true);
+            panduanOpen = false;
         }
     }
     public void PlayButton()
@@ -30,6 +38,12 @@ public class MainMenu : MonoBehaviour
         CreditMenu.SetActive(true);
         mainMenu.SetActive(false);
         CreditMenuOpen=true;
+    }
+    public void OpenPanduan()
+    {
+        panduan.SetActive(true);
+        mainMenu.SetActive(false);
+        panduanOpen = true;
     }
 
     public void BackButtom()
@@ -49,5 +63,11 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Exit");
     }
 
+    public void ClosePanduan()
+    {
+        panduan.SetActive(false);
+        mainMenu.SetActive(true);
+        panduanOpen = false;
+    }
 
 }

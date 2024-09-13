@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Rumah.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Terminal.unity
-    guid: 2b89504460db19942a92ea344931a5ba
+    path: Assets/Scenes/Terminal 1.unity
+    guid: d3ef73f95c88cb9419a23a3740fd7eb6
   m_configObjects: {}

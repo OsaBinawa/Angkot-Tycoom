@@ -10,4 +10,6 @@ public class Money : ScriptableObject
     
     public float amount;
     public float jumlahAngkot;
+    public float Driver;
+    public float LevelRumah;
 }

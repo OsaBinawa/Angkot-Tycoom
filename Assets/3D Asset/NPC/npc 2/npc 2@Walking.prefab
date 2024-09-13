@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   animator: {fileID: 0}
-  PATH: {fileID: 5026557176351672044, guid: d5c3730256d5025469ab35467e14720b, type: 3}
+  PATH: {fileID: 0}
   pathPoint: []
   speed: 4
   minDistance: 10

@@ -1062,12 +1062,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   animator: {fileID: 0}
-  PATH: {fileID: 4645755897847569873, guid: 9700fd71d537c9142b64295e3a95cbb1, type: 3}
+  PATH: {fileID: 0}
   pathPoint: []
   speed: 4
   minDistance: 10
   stopDuration: 0
-  index: 3
+  index: 0
   loop: 0
   navMeshArea: Human
   stopIndices: 

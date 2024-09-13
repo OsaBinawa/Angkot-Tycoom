@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c992384d1995d4b9289fd09db3f5c8, type: 3}
   m_Name: Money
   m_EditorClassIdentifier: 
-  amount: 4000
+  amount: 9600000
   jumlahAngkot: 1
+  Driver: 1
+  LevelRumah: 0
