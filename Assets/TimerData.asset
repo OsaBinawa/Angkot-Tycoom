@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da67ddf5fa063a43a31bf7eecd876b9, type: 3}
   m_Name: TimerData
   m_EditorClassIdentifier: 
-  timeRemaining: 45.264023
-  maxTime: 506.8259
+  timeRemaining: 1174.0107
+  maxTime: 60

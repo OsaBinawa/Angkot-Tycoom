@@ -21,7 +21,11 @@ public class Shop : MonoBehaviour
     public TimerData timerData;
     public float needDriver = 0f;
     public bool _needDriver;
+    public bool canBuyAngkot;
+    public bool canHire;
 
+    private Color normal = new Color(1f, 1f, 1f);
+    private Color diable = new Color(0.5f, 0.5f, 0.5f);
     public float itemPrice = 10f;
 
     public bool ShopWinOpen = false;
@@ -29,7 +33,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        //shopWin.SetActive(false);
+        /*//shopWin.SetActive(false);
         quantitySlider.minValue = 150;  // Example minimum value
         quantitySlider.maxValue = 1000; // Example maximum value
         quantitySlider.value = 150;    // Starting value (for example)
@@ -38,13 +42,32 @@ public class Shop : MonoBehaviour
         quantitySlider.onValueChanged.AddListener(OnSliderValueChanged);
 
         // Initialize text display
-        UpdateQuantityText();
+        UpdateQuantityText();*/
         UpdateUI();
     }
 
+    
     // Update is called once per frame
     void Update()
     {
+        if (canHire == true)
+        {
+            SetSpriteColor(BuyAngkots, normal);
+        }
+        else
+        {
+            SetSpriteColor(BuyAngkots, diable);
+        }
+
+        if (canBuyAngkot == true)
+        {
+            SetSpriteColor(BuyAngkots, normal);
+        }
+        else
+        {
+            SetSpriteColor(BuyAngkots, diable);
+        }
+
         if (ShopWinOpen == true && Input.GetKeyUp(KeyCode.Escape))
         {
             shopWin.SetActive(false);
@@ -55,20 +78,28 @@ public class Shop : MonoBehaviour
         if (upgrade.canBuyAngkot !=0)
         {
             BuyAngkots.enabled = true;
+            canBuyAngkot = true;
+            //SetSpriteColor(BuyAngkots, normal);
+            
         }
         else
         {
             BuyAngkots.enabled=false;
+            canBuyAngkot=false;
+            //SetSpriteColor(BuyAngkots, diable);
         }
 
         if (needDriver !=0)
         {
             UIHire.enabled = true;
+            canHire=true;
             
         }
         else
         {
             UIHire.enabled = false;
+            canHire = false;
+           
         }
 
         if (timerData != null)
@@ -81,14 +112,23 @@ public class Shop : MonoBehaviour
         }
         UpdateUI();
     }
+    public void buyGas()
+    {
+        if (Money.amount >= 1000)
+        {
+            timerData.timeRemaining += 60;
+            Money.amount -= 1000;
+            Manager.Gas = true;
+        }
+    }
 
-    private void OnSliderValueChanged(float value)
+    /*private void OnSliderValueChanged(float value)
     {
         // Update quantity display and other logic
         UpdateQuantityText();
-    }
+    }*/
 
-    private void UpdateQuantityText()
+    /*private void UpdateQuantityText()
     {
         if (quantityText != null)
         {
@@ -124,14 +164,14 @@ public class Shop : MonoBehaviour
         {
             Debug.Log("Insufficient funds!");
         }
-    }
+    }*/
 
     public void BuyAngkot()
     {
-        if (Money.amount >= 100000)
+        if (Money.amount >= 3000)
         {
             Money.jumlahAngkot += 1;
-            Money.amount -= 100000;
+            Money.amount -= 3000;
             needDriver += 1;
             upgrade.canBuyAngkot -= 1;
         }
@@ -143,10 +183,10 @@ public class Shop : MonoBehaviour
 
     public void HireDriver()
     {
-        if (Money.amount >= 10000)
+        if (Money.amount >= 1500)
         {
             Money.Driver += 1;
-            Money.amount -= 10000;
+            Money.amount -= 1500;
             needDriver -= 1;
         }
         else
@@ -161,4 +201,12 @@ public class Shop : MonoBehaviour
         driverText.text = Money.Driver.ToString();
     }
 
+    void SetSpriteColor(Button button, Color targetColor)
+    {
+        Image buttonImage = button.GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            buttonImage.color = targetColor;   // Change the sprite color
+        }
+    }
 }

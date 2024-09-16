@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.Audio;
 
 public class CanMove : NPCMove
@@ -11,10 +12,12 @@ public class CanMove : NPCMove
     public Money wallet; // Reference to the Money ScriptableObject
     public Timer timer; // Reference to the Timer script to track money earned in the scene
     public AudioClip MoneySound;
+    public ParticleSystem test;
 
     private AudioSource audioSource;
     protected override void Start()
     {
+        test.Stop();
         navMeshArea = "Car"; // Set this to Bus for the bus object
         base.Start();
         
@@ -34,7 +37,7 @@ public class CanMove : NPCMove
         {
             // Debug log to confirm detection
             Debug.Log("Destroying pedestrian: " + pedestrian.gameObject.name);
-
+            
             // Destroy the pedestrian GameObject
             Destroy(pedestrian.gameObject);
             
@@ -49,6 +52,7 @@ public class CanMove : NPCMove
             if (audioSource != null && MoneySound != null)
             {
                 audioSource.PlayOneShot(MoneySound);
+                test.Play();
             }
         }
 

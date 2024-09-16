@@ -1070,7 +1070,7 @@ MonoBehaviour:
   index: 0
   loop: 0
   navMeshArea: Human
-  stopIndices: 00000000
+  stopIndices: 
 --- !u!195 &9098646342690315606
 NavMeshAgent:
   m_ObjectHideFlags: 0
